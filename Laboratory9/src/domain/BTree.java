@@ -9,7 +9,7 @@ package domain;
  * @author Profesor Gilberth Chaves A <gchavesav@ucr.ac.cr>
  */
 public class BTree implements Tree {
-    private BTreeNode root; //la unica entrada al arbol binario
+    private BTreeNode root; //representa la unica entrada al arbol
 
     //Constructor
     public BTree(){
@@ -18,17 +18,25 @@ public class BTree implements Tree {
     
     @Override
     public int size() throws TreeException {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        if(isEmpty()){
+            throw new TreeException("Binary Tree is empty");
+        }
+        return size(root);
+    }
+    
+    private int size(BTreeNode nodo){
+        
+        return 0;
     }
 
     @Override
     public void clear() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        this.root = null;
     }
 
     @Override
     public boolean isEmpty() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        return root==null;
     }
 
     @Override
@@ -62,7 +70,14 @@ public class BTree implements Tree {
 
     @Override
     public void remove(Object element) throws TreeException {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        if(isEmpty())
+            throw new TreeException("Binary Tree is empty");
+        root = remove(root,element);
+    }
+    
+    private BTreeNode remove(BTreeNode node, Object element){
+        
+        return node;
     }
 
     @Override
@@ -98,6 +113,20 @@ public class BTree implements Tree {
     @Override
     public String postOrder() throws TreeException {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+    
+    //preOrden: recorre el árbol de la forma: nodo-izq-der
+    //inOrden: recorre el árbol de la forma: izq-nodo-der
+    //postOrden: recorre el árbol de la forma: izq-der-nodo
+    @Override
+    public String toString() {
+        if(isEmpty())
+            return "Binary Tree is empty";
+        String result = "BINARY TREE TOUR...\n";
+//        result+="PreOrder: "+preOrder(root)+"\n";
+//        result+="InOrder: "+inOrder(root)+"\n";
+//        result+="PostOrder: "+postOrder(root)+"\n";
+        return result;
     }
     
 }
