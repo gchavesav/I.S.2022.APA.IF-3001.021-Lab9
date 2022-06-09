@@ -4,6 +4,8 @@
  */
 package domain;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import org.testng.annotations.Test;
 
 /**
@@ -14,12 +16,36 @@ public class BTreeNGTest {
 
     @Test
     public void test() {
-        BTree btree = new BTree();
-        btree.add(20);
-        btree.add(7);
-        btree.add(10);
-        btree.add(32);
-        btree.add(15);
+        try {
+            BTree btree = new BTree();
+            for (int i = 0; i <10; i++) {  
+                btree.add(util.Utility.random(50));
+            }
+            System.out.println(btree.toString());
+            System.out.println("BTree size: "+btree.size());
+            for (int i = 0; i < 10; i++) {
+                int value = util.Utility.random(50);
+                System.out.println(btree.contains(value)
+                        ?"The value ["+value+"] exists in binary tree, "
+                        //+"node height: "+btree.height(value)
+                        :"The value ["+value+"] does not exist in binary tree"                
+                );   
+            }
+            System.out.println("Binary Tree Height: "+btree.height());
+            //System.out.println("getLeaf(): "+btree.getLeaf(btree.getRoot()));
+            
+            for (int i = 0; i < 10; i++) {
+                int value = util.Utility.random(50);
+                if(btree.contains(value)){
+                    System.out.println("The value ["+value+"] was deleted");
+                    btree.remove(value);
+                }
+            }
+            System.out.println(btree.toString());
+            
+        } catch (TreeException ex) {
+            Logger.getLogger(BTreeNGTest.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
     
 }
