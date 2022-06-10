@@ -25,7 +25,7 @@ public interface Tree {
 
     //inserta un elemento en el árbol
     public void add (Object element); 
-    //private BtreeNode add(BtreeNode node, Object element)
+    //private BTreeNode add(BtreeNode node, Object element)
 
     //suprime un elemento del árbol
     //Caso 1. El nodo a suprimir no tiene hijos
@@ -56,13 +56,15 @@ public interface Tree {
     public String preOrder() throws TreeException; 
     //private String preOrder(BTreeNode node)
     
-    //recorre el árbol de la forma: hijo izq-nodo-hijo der, 
-    //para mostrar todos los elementos existentes
-    public String InOrder() throws TreeException; 
+    //recorre el árbol de la forma: left-node-right,
+    //para mostrar todos los elementos existentes en el arbol
+    public String inOrder() throws TreeException;
+    //Tranversal Tour: L-N-R
     //private String InOrder(BTreeNode node)
     
-    ////recorre el árbol de la forma: hijo izq-hijo der-nodo, 
+    ////recorre el árbol de la forma: left-right-node, 
     //para mostrar todos los elementos existentes
     public String postOrder() throws TreeException; 
+    
     //private String postOrder(BTreeNode node)
 }

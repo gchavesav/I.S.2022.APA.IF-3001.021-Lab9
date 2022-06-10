@@ -201,7 +201,7 @@ public class BTree implements Tree {
     public int height() throws TreeException {
         if(isEmpty())
             throw new TreeException("Binary Tree is empty");
-        return height(root);
+        return height(root)-1;
     }
     
     private int height(BTreeNode node){
@@ -242,7 +242,7 @@ public class BTree implements Tree {
     }
 
     @Override
-    public String InOrder() throws TreeException {
+    public String inOrder() throws TreeException {
         if(isEmpty())
             throw new TreeException("Binary Tree is empty");
         return "InOrder Transversal Tour: "+InOrder(this.root);
